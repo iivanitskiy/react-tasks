@@ -1,6 +1,7 @@
 import { useFetch } from './useFetch';
 import { useLocalStorage } from './useLocalStorage';
 import { useHover } from './useHover';
+import { useViewportSize } from './useViewportSize';
 import './App.css'
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
   const [value, { setItem, removeItem }] = useLocalStorage('some-key');
 
   const { hovered, ref } = useHover();
+
+  const { height, width } = useViewportSize();
 
   return (
     <>
@@ -43,6 +46,11 @@ function App() {
       <div ref={ref} style={{ marginTop: '20px', padding: '20px', border: '1px solid black' }}>
         {hovered ? 'На меня навели мышку' : 'Наведи мышкой на меня'}
       </div>
+
+      <div style={{ marginTop: '20px', padding: '20px', border: '1px solid white' }}>
+        Width: {width}, height: {height}
+      </div>
+
     </>
   )
 }
