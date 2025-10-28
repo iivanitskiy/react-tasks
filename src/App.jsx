@@ -2,6 +2,7 @@ import { useFetch } from './useFetch';
 import { useLocalStorage } from './useLocalStorage';
 import { useHover } from './useHover';
 import { useViewportSize } from './useViewportSize';
+import { useWindowScroll } from './useWindowScroll';
 import './App.css'
 
 function App() {
@@ -11,15 +12,13 @@ function App() {
     error,
     refetch
   } = useFetch('https://jsonplaceholder.typicode.com/posts');
-
   const [value, { setItem, removeItem }] = useLocalStorage('some-key');
-
   const { hovered, ref } = useHover();
-
   const { height, width } = useViewportSize();
+  const [scroll, scrollTo] = useWindowScroll();
 
   return (
-    <>
+    <div>
       <div>
         <div>
           <button onClick={() => refetch({
@@ -51,7 +50,14 @@ function App() {
         Width: {width}, height: {height}
       </div>
 
-    </>
+      <div>
+        <p>
+          Scroll position x: {scroll.x}, y: {scroll.y}
+        </p>
+        <button onClick={() => scrollTo({ y: 0 })}>Scroll to top</button>
+      </div>
+
+    </div>
   )
 }
 
