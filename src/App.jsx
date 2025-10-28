@@ -3,6 +3,7 @@ import { useLocalStorage } from './useLocalStorage';
 import { useHover } from './useHover';
 import { useViewportSize } from './useViewportSize';
 import { useWindowScroll } from './useWindowScroll';
+import { useToggle } from './useToggle';
 import './App.css'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
   const { hovered, ref } = useHover();
   const { height, width } = useViewportSize();
   const [scroll, scrollTo] = useWindowScroll();
+  const [val, toggle] = useToggle(['blue', 'orange', 'cyan', 'teal']);
 
   return (
     <div>
@@ -56,6 +58,10 @@ function App() {
         </p>
         <button onClick={() => scrollTo({ y: 0 })}>Scroll to top</button>
       </div>
+
+      <button style={{ marginTop: '20px' }} onClick={() => toggle()}>
+        {val}
+      </button>
 
     </div>
   )
