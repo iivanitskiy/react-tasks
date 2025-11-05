@@ -23,7 +23,7 @@ function Locations() {
 	}, [handleScroll]);
 
 	return (
-		<Paper shadow="xl" p="xl" style={{ display: "grid", gridTemplateColumns: "repeat(3, 3fr)", gap: "20px" }} >
+    <Paper shadow="xl" p="xl" style={{ width: "80vw", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "20px" }} >
 			{loading && locations.length === 0 && <h1>Loading</h1>}
 			{error && <h1>Error</h1>}
 			<Suspense fallback="Загрузка">

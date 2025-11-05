@@ -1,6 +1,6 @@
 import { Container, Title } from '@mantine/core';
 import '../../pages/styles/Styles.css'
-import { Forms } from '../../features/forms/ui/Forms'
+import { Forms } from '../../features/Forms/ui/Forms'
 
 function Login() {
 
